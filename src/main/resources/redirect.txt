@@ -1,1 +1,29 @@
+# Redirect - Перенаправление через upstream прокси
+# Домены из этого списка будут перенаправлены через upstream SOCKS5 прокси
+# Полезно для обхода блокировок или дополнительной анонимизации
+
+# Социальные сети (если нужен обход через Tor/VPN)
+facebook\.com
+twitter\.com
+instagram\.com
+#telegram\.org
+
+# Onion-сайты (требуют Tor)
+.*\.onion
+
+# Торренты и файлообменники
+rutracker\.org
+.*torrent.*
+
+# Заблокированные ресурсы
+# linkedin\.com
+# medium\.com
+
+# Для тестирования перенаправления
 redirected\.com
+proxy-target\.example\.com
+upstream-test\.com
+
+# YouTube (раскомментируйте если нужен проксированный доступ)
+# youtube\.com
+# youtu\.be

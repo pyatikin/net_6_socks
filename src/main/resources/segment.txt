@@ -1,1 +1,34 @@
+# Segment - Применение сегментации трафика
+# К доменам из этого списка применяется сегментация начальных данных
+# Используется для обхода DPI (Deep Packet Inspection)
+
+# Мессенджеры (часто блокируются DPI)
+web\.telegram\.org
+whatsapp\.com
+
+# VPN-провайдеры
+.*vpn.*
+.*proxy.*
+
+# Защищенные соединения
+encrypted\..*
+secure\..*
+
+# Стриминговые сервисы
+netflix\.com
+kinopoisk\.ru
+ivi\.ru
+
+# Облачные хранилища
+dropbox\.com
+cloud\.mail\.ru
+disk\.yandex\.ru
+
+# Для тестирования сегментации
 segmentme\.com
+segment-test\.example\.com
+dpi-bypass\.test
+
+# Игровые платформы (часто требуют стабильное соединение)
+# steam\.com
+# discord\.com

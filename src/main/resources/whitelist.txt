@@ -1,1 +1,35 @@
+# Whitelist - Прямое подключение без модификаций
+# Домены из этого списка подключаются напрямую без сегментации и редиректов
+# Используется для доверенных или часто посещаемых сайтов
+
+# Российские поисковики и порталы
+ya\.ru
+yandex\.ru
+mail\.ru
+rambler\.ru
+vk\.com
+
+# Государственные сайты
+gosuslugi\.ru
+.*\.gov\.ru
+
+# Образовательные ресурсы
+.*\.edu\.ru
+habr\.com
+github\.com
+
+# Новостные порталы
+rbc\.ru
+ria\.ru
+tass\.ru
+interfax\.ru
+
+# Банки и финансы
+sberbank\.ru
+alfabank\.ru
+tinkoff\.ru
+
+# Для тестирования
 goodwebsite\.com
+trusted-site\.com
+safe\.example\.com
