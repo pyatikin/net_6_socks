@@ -1,0 +1,20 @@
+server:
+  listenPort: 1080
+
+upstream:
+  host: "127.0.0.1"
+  port: 9050
+
+segment:
+  blockSize: 200
+  segmentSize: 50
+  delayMs: 30
+
+strategy:
+  defaultStrategy: "direct"   # direct, redirect, segment
+
+rules:
+  blacklist: "blacklist.txt"
+  whitelist: "whitelist.txt"
+  redirect: "redirect.txt"
+  segment: "segment.txt"
