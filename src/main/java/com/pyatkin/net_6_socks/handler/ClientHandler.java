@@ -18,7 +18,12 @@ public class ClientHandler implements Runnable {
     private final String upstreamHost;
     private final int upstreamPort;
 
-    public ClientHandler(Socket client, RuleManager rules, TrafficSegmenter segmenter, String defaultStrategy, String upstreamHost, int upstreamPort) {
+    public ClientHandler(Socket client,
+                         RuleManager rules,
+                         TrafficSegmenter segmenter,
+                         String defaultStrategy,
+                         String upstreamHost,
+                         int upstreamPort) {
         this.client = client;
         this.rules = rules;
         this.segmenter = segmenter;
@@ -29,12 +34,32 @@ public class ClientHandler implements Runnable {
 
     @Override
     public void run() {
+        String clientAddr = client.getRemoteSocketAddress().toString();
+        log.debug("Starting client handler for: {}", clientAddr);
+
         try {
-            Socks5Session session = new Socks5Session(client, rules, segmenter, defaultStrategy, upstreamHost, upstreamPort);
+            Socks5Session session = new Socks5Session(
+                    client,
+                    rules,
+                    segmenter,
+                    defaultStrategy,
+                    upstreamHost,
+                    upstreamPort
+            );
             session.handle();
+
         } catch (Throwable t) {
-            log.error("Error in client handler: {}", t.getMessage(), t);
-            try { client.close(); } catch (Exception ignored) {}
+            log.error("Unexpected error in client handler for {}: {}", clientAddr, t.getMessage(), t);
+        } finally {
+            // Ensure socket is closed
+            if (client != null && !client.isClosed()) {
+                try {
+                    client.close();
+                    log.debug("Client socket closed: {}", clientAddr);
+                } catch (Exception e) {
+                    log.debug("Error closing client socket: {}", e.getMessage());
+                }
+            }
         }
     }
 }
